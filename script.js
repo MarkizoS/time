@@ -24,10 +24,15 @@ function time(){
     }
     
     let timerId = setInterval(tick ,1000);
-
-    function stop(){
-        clearInterval(timerId);
+     
+    btn.click = function(){
+        if(btn = true){
+            clearInterval(timerId);
+        } else {
+            return tick
+        }
     }
+
     
 }
 
