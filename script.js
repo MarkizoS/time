@@ -30,7 +30,7 @@ function StartTimer(){
         }
         console.log(`sec: ${sec}, min: ${min}, hour: ${hour}`);
         
-        GlobalTime += 1
+        GlobalTime += 1;
         CircleTime += 1 
     }
 
@@ -57,4 +57,11 @@ function GetCircleArr(){
     console.log(CircleArr)
 }
 
+function Refresh(){
+    clearInterval(timerId)
+    GlobalTime = 0;
+    CircleTime = 0;
+    CircleNum = 0;
+    CircleArr = [] 
+}
 
