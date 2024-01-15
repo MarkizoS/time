@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){ 
     let ost = 0                                                                                                                       
-    let GlobalTime = 7200
+    let GlobalTime = 7565
     let timerId = 0
     let CircleArr = [];
     let CircleTime = 0
@@ -21,6 +21,27 @@ document.addEventListener('DOMContentLoaded', function(){
     buttonCircle.addEventListener('click',Circle );
     buttonRefresh.addEventListener('click',Refresh )
 
+    document.getElementById("Start").enabled = true; 
+    document.getElementById("Stop").enabled = true; 
+
+    if(buttonStart == true){
+        document.getElementById("Start").enabled = false;
+        document.getElementById("Start").enabled = true; 
+        // buttonStart.setAttribute("disabled","true");
+    } else if (button == false){
+        document.getElementById("Stop").enabled = false; 
+        document.getElementById("Stop").enabled = true; 
+        // button.setAttribute("enabled","true");
+    }
+
+    if(button == true){
+        button.setAttribute("disabled","true");
+    }else if(button == false){
+        button.setAttribute("enabled","true")
+    }
+    
+
+
 
     function StartTimer(){
         let sec = '00', min = '00', hour = '00';
@@ -31,11 +52,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 ost = ((GlobalTime % 60)/60)  
                 min = (GlobalTime / 60) - ost;
             }
-            if(min >= 60){
-                // min = GlobalTime % 60
-                ost = ((GlobalTime % 3600)/3600)  
-                hour = (GlobalTime / 3600) - ost;
-            }
+            // if(min >= 60){
+            //     ost = ((GlobalTime % 3600)/3600)  
+            //     hour = (GlobalTime / 3600) - ost;
+            // }
             sec = +sec +1;
             if( sec < 10 ) {
                 sec = '0' + sec; 
