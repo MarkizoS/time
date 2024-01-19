@@ -1,40 +1,51 @@
 document.addEventListener('DOMContentLoaded', function(){ 
-    let ost = 0                                                                                                                       
-    let GlobalTime = 7200
-    let timerId = 0
+    let ost = 0
+    let osthour = 0                                                                                                                       
+    let GlobalTime = 0
+    let timerId = null
     let CircleArr = [];
     let CircleTime = 0
     let CircleNum = 0 
+    let hasStarting = false;
+    let sec = '00', min = '00', hour = '00';
+    
 
     let buttonRefresh = document.getElementById("Refresh");
     let buttonCircle = document.getElementById("Circle");
     let buttonStart = document.getElementById("Start");
     let button = document.getElementById("Stop");
-    let NumString = document.getElementById("NumString")
     let table = document.getElementById("NumTable")
     console.log(button)
+
     // button.style.display = "none";
     // buttonCircle.style.display ="none"
-
+    
     buttonStart.addEventListener('click',StartTimer );
     button.addEventListener('click',StopTimer );
     buttonCircle.addEventListener('click',Circle );
     buttonRefresh.addEventListener('click',Refresh )
-
-
-    function StartTimer(){
-        let sec = '00', min = '00', hour = '00';
         
-        function tick(){
+        
+
+        function StartTimer(){
+            
+            if (hasStarting) {
+                return;
+            }
+            
+            hasStarting = true
+            
+            function tick(){
+
             if(GlobalTime >= 60){
                 sec = GlobalTime % 60
-                ost = ((GlobalTime % 60)/60)  
-                min = (GlobalTime / 60) - ost;
+                ost = (GlobalTime % 60)/60   
+                min = (GlobalTime / 60) - ost
             }
-            if(min >= 60){
-                // min = GlobalTime % 60
-                ost = ((GlobalTime % 3600)/3600)  
-                hour = (GlobalTime / 3600) - ost;
+            if(GlobalTime >= 3600){
+                min = +min - 60
+                osthour = (GlobalTime % 3600)/3600
+                hour = (GlobalTime / 3600) - osthour
             }
             sec = +sec +1;
             if( sec < 10 ) {
@@ -46,29 +57,42 @@ document.addEventListener('DOMContentLoaded', function(){
                 if( min < 10 ) { 
                     min = '0' + min; 
                 }
-                if( min == 60 ) {
+                if( min >= 60 ) {
+                    min = +min
                     min = '00';
                     hour = +hour + 1;
                     if( hour < 10 ) {
                         hour = '0' + hour; 
                     }
                 }
+                
             }
-            console.log(`sec: ${sec}, min: ${min}, hour: ${hour}`);
+            console.log(`sec: ${sec}, min: ${Math.ceil(min)}, hour: ${Math.ceil(hour)}`);
             
             GlobalTime += 1;
             CircleTime += 1;
-
+            
             console.log(`GlobalTime:${GlobalTime}`)
+
+            document.getElementById("NumString").innerHTML = `${Math.ceil(hour)}:${Math.ceil(min)},${sec}`;
         }
+        
         console.log(sec)
+        
         timerId = setInterval(tick ,1000);
+        
         
     }
 
     function StopTimer(){
+        if (timerId) {
+            clearInterval(timerId);
+            timerId = null;
+            hasStarting = false;
+        }
         console.log(GlobalTime);
-        clearInterval(timerId);
+        GetCircleArr()
+        
     }
 
     function Circle(){

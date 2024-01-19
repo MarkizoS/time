@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="style.css" >
     <title>Document</title>
+    
 </head>
 <body>
     <script src="script.js"></script>
@@ -12,35 +14,34 @@
  <div class="MainScreen">
 
     <div class="TimeString">
-        <h1 id="NumString" >00:34,54</h1>
+        <p id="NumString" class="numbers"></p>
     </div>
 
     <div class="ButtonContainer">
 
-        <div class="DivLeftButton">
-            <button class="LeftButton" id="Refresh">
-                <h4>Сброс</h4>
+        <div class="DivButton">
+            <button class="LeftButton" id="Refresh" type="button">
+                Сброс
             </button>
             
-            <button class="LeftButtonCircle" id="Circle">
-                <h4>Круг</h4>
-            </button>
-        </div>
-            
-        <div class="DivRightButton">
-            <button class="RightButton" id="Start">
-                <h4>Старт</h4>
-            </button>
-            
-            <button class="RightButtonStop" id="Stop">
-                <h4>Стоп</h4>
+            <button class="LeftButton" id="Circle" type="button">
+                Круг
             </button>
         </div>
             
-        
+        <div class="DivButton">
+            <button class="RightButtonStart" id="Start" type="button">
+                Старт
+            </button>
+            
+            <button class="RightButtonStop" id="Stop" type="button">
+                Стоп
+            </button>
+        </div>
+            
     </div>
     <div class="TableDiv">
-        <table border="1px" height="60%" id="NumTable">
+        <table border="1px" height="60%" id="NumTable" class="text">
             <tr>
                 <td width="100px">Круг 1</td>
                 <td width="200px"></td>
