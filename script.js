@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function(){ 
-    let ost = 0
-    let osthour = 0                                                                                                                       
+    let ost = 0                                                                                                                       
     let GlobalTime = 0
-    let timerId = null
+    let timerId = 0
     let CircleArr = [];
     let CircleTime = 0
     let CircleNum = 0 
@@ -24,28 +23,21 @@ document.addEventListener('DOMContentLoaded', function(){
     button.addEventListener('click',StopTimer );
     buttonCircle.addEventListener('click',Circle );
     buttonRefresh.addEventListener('click',Refresh )
-        
-        
 
-        function StartTimer(){
-            
-            if (hasStarting) {
-                return;
-            }
-            
-            hasStarting = true
-            
-            function tick(){
 
+    function StartTimer(){
+        let sec = '00', min = '00', hour = '00';
+        
+        function tick(){
             if(GlobalTime >= 60){
                 sec = GlobalTime % 60
                 ost = (GlobalTime % 60)/60   
                 min = (GlobalTime / 60) - ost
             }
-            if(GlobalTime >= 3600){
-                min = +min - 60
-                osthour = (GlobalTime % 3600)/3600
-                hour = (GlobalTime / 3600) - osthour
+            if(min >= 60){
+                // min = GlobalTime % 60
+                ost = ((GlobalTime % 3600)/3600)  
+                hour = (GlobalTime / 3600) - ost;
             }
             sec = +sec +1;
             if( sec < 10 ) {
