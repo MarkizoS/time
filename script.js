@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function(){
     let CircleNum = 0
     let osth = 0 
     let hasStart = false
-  
 
     let buttonRefresh = document.getElementById("Refresh");
     let buttonCircle = document.getElementById("Circle");
@@ -22,9 +21,14 @@ document.addEventListener('DOMContentLoaded', function(){
     buttonCircle.addEventListener('click',Circle );
     buttonRefresh.addEventListener('click',Refresh )
 
-    
+    button.style.display = "none";
+    buttonRefresh.style.display = "none";
+
     function StartTimer(){
-        
+        buttonRefresh.style.display = "none";
+        buttonStart.style.display = "none";
+        buttonCircle.style.display = "";
+        button.style.display = "";
         let sec = GlobalTime
         min = '00'
         hour = '00';
@@ -83,6 +87,10 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function StopTimer(){
+        button.style.display = "none";
+        buttonCircle.style.display = "none";
+        buttonStart.style.display = "";
+        buttonRefresh.style.display = "";
         console.log(GlobalTime);
         clearInterval(timerId);
         hasStart = false
@@ -99,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function(){
         };
         CircleTime = GlobalTime
         CircleArr.push(box);
+        document.getElementById("numOfcircle").innerHTML = `Круг ${CircleNum}`
+        document.getElementById("circleStr").innerHTML = `${CircleTime} Секунд`
     }
     
 
@@ -110,6 +120,8 @@ document.addEventListener('DOMContentLoaded', function(){
         CircleNum = 0;
         CircleArr = []
         hasStart = false 
+        document.getElementById("numOfcircle").innerHTML = ``
+        document.getElementById("circleStr").innerHTML = ``
     }
     
 });
