@@ -1,3 +1,7 @@
+*{
+    font-family:Roboto-Light;
+}
+
 .MainScreen{
     border: 2px solid black;
     margin-left:37%;
@@ -30,7 +34,7 @@
 
 .TableDiv{
     overflow-y:scroll;
-    margin: 0;
+    margin-left: 6%;
     margin-top: 3em;
     height: 40%;
     width: 100%;
