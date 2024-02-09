@@ -13,16 +13,13 @@
 
 .TimeString{
     width: 100%;
-    margin-top: 15%;
     margin-right:5%;
-    height: 6em;
 }
 
 .ButtonContainer{
     margin-left:5%;
     margin-right:5%;
     height: 4em;
-    margin-top: 20%;
     display: flex;
     justify-content: space-between;    
 }
@@ -77,7 +74,7 @@ h1{
     border-radius:100%;
 }
 
-p{
+p{  margin: 0px;
     text-align: center;
 }
 
@@ -86,8 +83,11 @@ p{
 }
 
 .numbers{
-    font-size: 100px;
-    color: white;
+    top: 11em;
+    z-index: 2;
+    position: relative;
+    font-size: 25px;
+    color:black;
 }
 
 .LeftButton:hover{
@@ -134,4 +134,33 @@ p{
 
 .circleTable > tbody > tr > td:nth-child(2){
     width: 200px;
+}
+.Ciferblat{
+    left: 1em;
+    z-index: 1;
+    position: relative;
+    height: 320px;
+}
+
+.bigStrelka{
+    animation: rotate 60s infinite linear;
+    bottom: 20px;
+    right: 156px;
+    z-index: 2;
+    height: 279px;
+    position:relative;
+}
+.miniStrelka{
+    animation: rotate 1800s infinite linear;
+    bottom: 183px;
+    right: 171px;
+    z-index: 2;
+    height: 95px;
+    position: relative;
+}
+
+@keyframes rotate{
+    100%{
+        transform: rotateZ(360deg);
+    }
 }

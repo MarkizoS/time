@@ -21,17 +21,43 @@ document.addEventListener('DOMContentLoaded', function(){
 
     button.style.display = "none";
     buttonRefresh.style.display = "none";
-
+    
     let sec = GlobalTime
     let min = '00' 
     let hour = '00'
-    
+    let minutes = min
+    let seconds = sec
+
+    let  hands = [
+        {   hand: 'miniStrelka',
+            angle: (minutes * 6)
+        },
+        {   hand: 'bigStrelka',
+            angle: (seconds * 6)
+        }
+    ]
+
+    for (var j = 0; j < hands.length; j++) {
+        var elements = document.querySelectorAll('.' + hands[j].hand);
+        for (var k = 0; k < elements.length; k++) {
+            elements[k].style.webkitTransform = 'rotateZ('+ hands[j].angle +'deg)';
+            elements[k].style.transform = 'rotateZ('+ hands[j].angle +'deg)';
+            if (hands[j].hand === 'minutes') {
+              elements[k].parentNode.setAttribute('data-second-angle', hands[j + 1].angle);
+            }
+        }
+      }
+      
+      
     function StartTimer(){
+
+        
 
         buttonRefresh.style.display = "none";
         buttonStart.style.display = "none";
         buttonCircle.style.display = "";
         button.style.display = "";
+       
         
         if (hasStart) {
             return;
@@ -80,8 +106,10 @@ document.addEventListener('DOMContentLoaded', function(){
         }
         
         timerId = setInterval(tick ,1000);
-    }
 
+      
+    }
+    
     function StopTimer(){
         button.style.display = "none";
         buttonCircle.style.display = "none";
@@ -101,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function(){
      
         let box = {
             Time: CircleTime - sum,
-            Num: CircleNum
+            Num: CircleNum,
         };
         
         CircleArr.push(box);
@@ -133,33 +161,7 @@ document.addEventListener('DOMContentLoaded', function(){
         hasStart = false 
         document.getElementById("NumTable").innerHTML = `` 
     }
-    
-});
 
-// function Test (){
-//     let obj = {
-//         hello:"q",
-//         0:"q2"
-//     }
-//     let arr4 = [
-//         "q3", 
-//         "q4"
-//     ]
-//     let arr3 = [
-//         "q2", 
-//         "q3", 
-//         arr4 
-//     ]
-//     let arr = [
-//         "q", 
-//         arr3,
-//         obj,
-//         Test2
-//     ]
-//     arr[3]()
-//     let arr2 = ["q1", "q2", "q3"]
-//     console.log(obj["hello"],obj.hello,obj[0])
-//  } 
-//  function Test2 (){
-//     console.log("Test2")
-//     }
+    
+    
+})
