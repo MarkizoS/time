@@ -28,6 +28,12 @@ document.addEventListener('DOMContentLoaded', function(){
     let minutes = min
     let seconds = sec
 
+    var big = document.getElementById('biggestStrelka')
+    var small = document.getElementById('littlestStrelka')
+
+    
+
+
     let  hands = [
         {   hand: 'miniStrelka',
             angle: (minutes * 6)
@@ -51,8 +57,12 @@ document.addEventListener('DOMContentLoaded', function(){
       
     function StartTimer(){
 
+        $(document).ready(function () {
+            $(".bigStrelka").click(function () {
+                $(this).toggleClass('bigStrelka');
+            });    
+        });
         
-
         buttonRefresh.style.display = "none";
         buttonStart.style.display = "none";
         buttonCircle.style.display = "";
@@ -66,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function(){
         hasStart = true;
         
         function tick(){
-
+ы
             let sec = GlobalTime
 
             if(GlobalTime >= 60){
