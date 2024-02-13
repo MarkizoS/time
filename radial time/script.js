@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', function(){
     let NumString = document.getElementById("NumString")
     let Table = document.getElementById("NumTable")
 
-    buttonStart.addEventListener('click',StartTimer );
+
+
+    buttonStart.addEventListener('click',StartTimer,);
     button.addEventListener('click',StopTimer );
     buttonCircle.addEventListener('click',Circle );
     buttonRefresh.addEventListener('click',Refresh )
@@ -27,13 +29,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let hour = '00'
     let minutes = min
     let seconds = sec
-
-    var big = document.getElementById('biggestStrelka')
-    var small = document.getElementById('littlestStrelka')
-
     
-
-
     let  hands = [
         {   hand: 'miniStrelka',
             angle: (minutes * 6)
@@ -42,41 +38,37 @@ document.addEventListener('DOMContentLoaded', function(){
             angle: (seconds * 6)
         }
     ]
+    
 
-    for (var j = 0; j < hands.length; j++) {
-        var elements = document.querySelectorAll('.' + hands[j].hand);
-        for (var k = 0; k < elements.length; k++) {
-            elements[k].style.webkitTransform = 'rotateZ('+ hands[j].angle +'deg)';
-            elements[k].style.transform = 'rotateZ('+ hands[j].angle +'deg)';
-            if (hands[j].hand === 'minutes') {
-              elements[k].parentNode.setAttribute('data-second-angle', hands[j + 1].angle);
-            }
-        }
-      }
-      
-      
     function StartTimer(){
 
-        $(document).ready(function () {
-            $(".bigStrelka").click(function () {
-                $(this).toggleClass('bigStrelka');
-            });    
-        });
         
         buttonRefresh.style.display = "none";
-        buttonStart.style.display = "none";
-        buttonCircle.style.display = "";
-        button.style.display = "";
-       
-        
-        if (hasStart) {
-            return;
-          }
-
-        hasStart = true;
-        
-        function tick(){
-ы
+          buttonStart.style.display = "none";
+          buttonCircle.style.display = "";
+          button.style.display = "";
+          
+          
+          if (hasStart) {
+              return;
+            }
+            
+            hasStart = true;
+            
+            bigStrelka.style.animation = "rotate 60s infinite linear";
+            
+            for (var j = 0; j < hands.length; j++) {
+                var elements = document.querySelectorAll('.' + hands[j].hand);
+                for (var k = 0; k < elements.length; k++) {
+                    elements[k].style.webkitTransform = 'rotateZ('+ hands[j].angle +'deg)';
+                    elements[k].style.transform = 'rotateZ('+ hands[j].angle +'deg)';
+                    if (hands[j].hand === 'minutes') {
+                      elements[k].parentNode.setAttribute('data-second-angle', hands[j + 1].angle);
+                    }
+                }
+            }
+            
+            function tick(){
             let sec = GlobalTime
 
             if(GlobalTime >= 60){

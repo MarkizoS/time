@@ -143,7 +143,7 @@ p{  margin: 0px;
 }
 
 .bigStrelka{
-    animation: rotate 60s infinite linear;
+    /* animation: rotate 60s infinite linear; */
     bottom: 20px;
     right: 156px;
     z-index: 2;
@@ -151,7 +151,7 @@ p{  margin: 0px;
     position:relative;
 }
 .miniStrelka{
-    animation: rotate 1800s infinite linear;
+    /* animation: rotate 1800s infinite linear; */
     bottom: 183px;
     right: 171px;
     z-index: 2;
