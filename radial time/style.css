@@ -83,11 +83,11 @@ p{  margin: 0px;
 }
 
 .numbers{
-    top: 11em;
+    top: 250px;
     z-index: 2;
     position: relative;
     font-size: 25px;
-    color:black;
+    color:white;
 }
 
 .LeftButton:hover{
@@ -143,17 +143,15 @@ p{  margin: 0px;
 }
 
 .bigStrelka{
-    /* animation: rotate 60s infinite linear; */
-    bottom: 20px;
-    right: 156px;
+    bottom: 3px;
+    right: 152px;
     z-index: 2;
-    height: 279px;
+    height: 316px;
     position:relative;
 }
 .miniStrelka{
-    /* animation: rotate 1800s infinite linear; */
-    bottom: 183px;
-    right: 171px;
+    bottom: 168px;
+    right: 166px;
     z-index: 2;
     height: 95px;
     position: relative;
@@ -164,3 +162,5 @@ p{  margin: 0px;
         transform: rotateZ(360deg);
     }
 }
+
+  
